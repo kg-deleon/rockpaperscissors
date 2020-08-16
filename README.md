@@ -1,0 +1,1 @@
+A Rock-Paper-Scissors simulator made using JavaScript and HTML. The computer selects a random choice while the player enters their choice. The choices are compared and the winning choice is revealed.
