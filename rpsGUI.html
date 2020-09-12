@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock Paper Scissors!</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissor</button>
+    <div id="container"></div>
+</body>
+<script>
+    const btnRock = document.getElementById('rock');
+    const btnPaper = document.getElementById('paper');
+    const btnScissors = document.getElementById('scissors');
+    const myText = document.getElementById('container');
+
+    btnRock.addEventListener('click', function(){
+    playerChoice = "rock";
+    game();
+    });
+
+    btnPaper.addEventListener('click', function(){
+    playerChoice = "paper";
+    game();
+    });
+
+    btnScissors.addEventListener('click', function(){
+    playerChoice = "scissors";
+    game();
+    });
+
+    //initialize scores
+    let playerScore=0;
+    let computerScore=0;
+
+    function game(){
+        
+    
+    //computer's choice
+    let computerChoice = Math.floor(Math.random() * (3 - 1 + 1) ) + 1;
+                if (computerChoice ==1) {
+                    computerChoice = "rock";
+                }else if(computerChoice == 2) {
+                    computerChoice = "paper";
+                }else{
+                    computerChoice = "scissors";
+                }; 
+    
+    //player's choice
+    playRound(playerChoice, computerChoice);
+
+        function playRound(player, computer) {
+  
+            if ( player===computer ) {         
+                const myInsertText = `Draw! Player: ${playerScore} Computer: ${computerScore}`;
+                myText.innerHTML = myInsertText;
+            }
+            else if (player==="rock") {
+                if (computer==='paper') {
+                    computerScore++;
+                    const myInsertText = `Computer wins! Paper beats rock. Player: ${playerScore} Computer: ${computerScore}`; 
+                    myText.innerHTML = myInsertText;
+
+                }
+                else {
+                    playerScore++;
+                    const myInsertText = `Player wins! Rock beats scissors. Player: ${playerScore} Computer: ${computerScore}`;
+                    myText.innerHTML = myInsertText;
+                }
+            }
+            else if (player==="paper") {
+                if (computer==='scissors'){
+                    computerScore++;
+                    const myInsertText = `Computer wins! Scissors beats paper. Player: ${playerScore} Computer: ${computerScore}`;
+                    myText.innerHTML = myInsertText;
+                }
+                else {
+                    playerScore++;
+                    const myInsertText = `Player wins! Paper beats rock. Player: ${playerScore} Computer: ${computerScore}`;
+                    myText.innerHTML = myInsertText;
+                }
+            }
+            else if (player==="scissors") {
+                if (computer==='rock'){
+                    computerScore++;
+                    const myInsertText = `Computer wins! Rock beats scissors.  Player: ${playerScore} Computer: ${computerScore}`;
+                    myText.innerHTML = myInsertText;
+                }
+                else {
+                    playerScore++;
+                    const myInsertText = `Player wins! Scissors beats paper.  Player: ${playerScore} Computer: ${computerScore}`;
+                    myText.innerHTML = myInsertText;
+                }
+            }
+        }
+        if (playerScore==5) {
+            const myInsertText = 'Player is the Winner!';
+            myText.innerHTML = myInsertText;
+            }
+        else if (computerScore==5) {
+            const myInsertText = 'Computer is the Winner!';
+            myText.innerHTML = myInsertText;
+            }
+    }
+    
+</script>
+</html>
